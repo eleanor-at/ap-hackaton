@@ -34,7 +34,25 @@ public:
             }
         }
     }
-    std::vector<int> voisins_moins(); // renvoie la liste des voisins du -1
+    int ligne(int e) // renvoie la ligne du board sur laquelle est l'élément (commence à 0)
+    {
+        return (position(e)/3);
+    }
+    int colonne(int e) // renvoie la colonne du board sur laquelle est l'élément (commence à 0)
+    {
+        return (position(e)%3);
+    }
+    std::vector<int> voisins_moins() {
+        std::vector<int> voisins;
+        int l = ligne(position(-1));
+        int c = colonne(position(-1));
+        if (l==0){
+            if (c==0){
+            
+            };
+        }
+
+    }; // renvoie la liste des voisins du -1
     bool win() // renvoie si on a gagné
     {
         for (int i = 0; i < 8; i++)
