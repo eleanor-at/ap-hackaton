@@ -15,6 +15,7 @@ bool in(int x,std::vector<int> vect) //vérifie si x est dans vect
     return false;
 }
 
+
 class Board
 {
 private:
@@ -22,6 +23,10 @@ private:
 
 public:
     Board() : tab(9) {};
+    explicit Board(const std::vector<int>& vect) : tab(vect) {
+        if (this->tab.size() != 9)
+            throw std::runtime_error("");
+    }
     void reset() //crée un board avec les nombres rangés aléatoirement et le -1 en bas à droite
     {
         std::vector<int> present;
@@ -44,7 +49,7 @@ public:
     {
         return tab;
     }
-    int position(int e) // renvoie la position d'un élément du board
+    int position(int e) const // renvoie la position d'un élément du board
     {
         for (int i = 0; i < 9; i++)
         {
@@ -55,15 +60,15 @@ public:
         };
         return (99);
     }
-    int ligne(int e) // renvoie la ligne du board sur laquelle est l'élément (commence à 0)
+    int ligne(int e) const// renvoie la ligne du board sur laquelle est l'élément (commence à 0)
     {
         return (position(e)/3);
     }
-    int colonne(int e) // renvoie la colonne du board sur laquelle est l'élément (commence à 0)
+    int colonne(int e) const // renvoie la colonne du board sur laquelle est l'élément (commence à 0)
     {
         return (position(e)%3);
     }
-    std::vector<int> voisins_moins() { // renvoie la liste des voisins du -1
+    std::vector<int> voisins_moins() const { // renvoie la liste des voisins du -1
         std::vector<int> voisins;
         int i = position(-1);
         int l = ligne(position(-1));
@@ -89,12 +94,18 @@ public:
             voisins.push_back(i-1);
         }
         }
-    std::vector<Board> adjacents () {
-        std::vector<int> vois_moins;
+    std::vector<Board> adjacents () const {
+        std::vector<int> vois_moins = voisins_moins();
+        int p_moins = position(-1);
         int l = vois_moins.size();
+        std::vector<Board> boards_adjacents;
         for (int i = 0; i < l; i++) {
-            std::vector<Board> new_board;
+            Board new_board = Board(tab);
+            int p = position(vois_moins[i]);
+            new_board.swap(p_moins, p);
+            boards_adjacents.push_back(new_board);
         }
+        return boards_adjacents;
 
     } 
     bool equal (Board b1, Board b2) { //fonction testant si deux boards sont égaux
