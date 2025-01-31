@@ -24,8 +24,7 @@ public:
     {
         return tab;
     }
-    std::vector<int> voisins_moins () {}; //renvoie la liste des voisins du -1
-    int position (int e) // renvoie la position de e
+    int position (int e) // renvoie la position d'un élément du board
     {
         for (int i = 0; i < 9; i++)
         {
@@ -34,7 +33,8 @@ public:
                 return i;
             }
         }
-    };
+    }
+    std::vector<int> voisins_moins ();//renvoie la liste des voisins du -1
     bool win() //renvoie si on a gagné
     {
         for (int i = 0; i < 8; i++)
