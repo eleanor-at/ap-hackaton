@@ -7,25 +7,6 @@
 #include <cstdlib>
 
 
-void affichage(Board tab)
-{
-    std::vector<int> vect=tab.tableau();
-    for (int i=0;i<3;i++)
-    {
-        std::cout<<vect[i]<<"  ";
-    }
-    std::cout<<std::endl;
-    for (int i=3;i<6;i++)
-    {
-        std::cout<<vect[i]<<"  ";
-    }
-    std::cout<<std::endl;
-    for (int i=6;i<9;i++)
-    {
-        std::cout<<vect[i]<<"  ";
-    }
-}
-
 bool in(int x,std::vector<int> vect) //vérifie si x est dans vect
 {
     for (auto e:vect)
@@ -143,3 +124,23 @@ public:
         return true;
     }
 };
+
+
+void affichage(Board tab)
+{
+    std::vector<int> vect=tab.tableau();
+    for (int i=0;i<3;i++)
+    {
+        std::cout<<vect[i]<<"  ";
+    }
+    std::cout<<std::endl;
+    for (int i=3;i<6;i++)
+    {
+        std::cout<<vect[i]<<"  ";
+    }
+    std::cout<<std::endl;
+    for (int i=6;i<9;i++)
+    {
+        std::cout<<vect[i]<<"  ";
+    }
+}
