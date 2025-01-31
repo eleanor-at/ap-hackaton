@@ -14,17 +14,17 @@ private:
 public:
     Board() : tab(9) {};
     void reset();
-    void swap(int x, int y) //échange deux éléments du board, prend en arguments les positions de ces éléments
+    void swap(int x, int y) // échange deux éléments du board, prend en arguments les positions de ces éléments
     {
         int t = tab[x];
         tab[x] = tab[y];
         tab[y] = t;
-    }
-    std::vector<int> tableau () //renvoie le board
+    };
+    std::vector<int> tableau() // renvoie le board
     {
         return tab;
-    }
-    int position (int e) // renvoie la position d'un élément du board
+    };
+    int position(int e) // renvoie la position d'un élément du board
     {
         for (int i = 0; i < 9; i++)
         {
@@ -33,9 +33,11 @@ public:
                 return i;
             }
         }
-    }
-    std::vector<int> voisins_moins ();//renvoie la liste des voisins du -1
-    bool win() //renvoie si on a gagné
+    };
+    std::vector<int> voisins_moins() { // renvoie la liste des voisins du -1
+
+    };
+    bool win() // renvoie si on a gagné
     {
         for (int i = 0; i < 8; i++)
         {
@@ -51,4 +53,3 @@ public:
         return true;
     };
 };
-
