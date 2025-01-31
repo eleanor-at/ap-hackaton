@@ -32,8 +32,8 @@ public:
     }
     void reset() // crée un board avec les nombres rangés aléatoirement et le -1 en bas à droite
     {
-        std::vector<int> present;
         tab[8] = -1;
+        std::vector<int> present;
         for (int i = 0; i < 8; i++)
         {
             int x = rand() % 8 + 1;

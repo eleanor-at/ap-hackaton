@@ -101,6 +101,7 @@ void play()
 
 int main()
 {
+    srand(time(NULL));
     play();
     return 0;
 }
