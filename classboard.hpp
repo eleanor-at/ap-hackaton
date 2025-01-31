@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <stdexcept>
 #include <cstdlib>
@@ -12,6 +13,7 @@ private:
 
 public:
     Board() : tab(9) {};
+    void reset();
     void swap(int x, int y) //échange deux éléments du board, prend en arguments les positions de ces éléments
     {
         int t = tab[x];
@@ -23,11 +25,11 @@ public:
         return tab;
     }
     std::vector<int> voisins_moins () {}; //renvoie la liste des voisins du -1
-    int find_moins () // renvoie la position du -1
+    int position (int e) // renvoie la position du -1
     {
         for (int i = 0; i < 9; i++)
         {
-            if (tab[i] == -1)
+            if (tab[i] == e)
             {
                 return i;
             }
