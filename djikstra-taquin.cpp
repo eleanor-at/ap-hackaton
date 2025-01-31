@@ -17,13 +17,14 @@ public:
 
     void ajouter(Board& s1, Board& s2)
     {
-        graph.crochets(s1).push(s2);
+        graph[s1].push_back(s2);
     }
 
     Graph_board(Board begin) :
 
     {
-        stack<Board> voisins;
+
+        stack<Board> a_visiter;
         a_visiter.push(begin);
         while (not a_visiter.empty())
         {
