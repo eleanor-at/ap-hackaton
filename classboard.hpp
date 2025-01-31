@@ -6,12 +6,14 @@
 #include <string>
 #include <cstdlib>
 
-
-bool in(int x,std::vector<int> vect) //vérifie si x est dans vect
+bool in(int x, std::vector<int> vect) // vérifie si x est dans vect
 {
-    for (auto e:vect)
+    for (auto e : vect)
     {
-        if (e==x){return true;}
+        if (e == x)
+        {
+            return true;
+        }
     }
     return false;
 }
@@ -23,20 +25,24 @@ private:
 
 public:
     Board() : tab(9) {};
-    explicit Board(const std::vector<int>& vect) : tab(vect) {
+    explicit Board(const std::vector<int> &vect) : tab(vect)
+    {
         if (this->tab.size() != 9)
             throw std::runtime_error("Taille de board non valide.");
     }
-    void reset() //crée un board avec les nombres rangés aléatoirement et le -1 en bas à droite
+    void reset() // crée un board avec les nombres rangés aléatoirement et le -1 en bas à droite
     {
         std::vector<int> present;
-        tab[8]=-1;
-        for (int i=0;i<8;i++)
+        tab[8] = -1;
+        for (int i = 0; i < 8; i++)
         {
-            int x=rand()%8+1;
-            while (in(x,present)) {x=rand()%8+1;}
+            int x = rand() % 8 + 1;
+            while (in(x, present))
+            {
+                x = rand() % 8 + 1;
+            }
             present.push_back(x);
-            tab[i]=x;
+            tab[i] = x;
         }
     }
     void swap(int x, int y) // échange deux éléments du board, prend en arguments les positions de ces éléments
@@ -60,47 +66,56 @@ public:
         };
         return (99);
     }
-    int ligne(int e) const// renvoie la ligne du board sur laquelle est l'élément (commence à 0)
+    int ligne(int e) const // renvoie la ligne du board sur laquelle est l'élément (commence à 0)
     {
-        return (position(e)/3);
+        return (position(e) / 3);
     }
     int colonne(int e) const // renvoie la colonne du board sur laquelle est l'élément (commence à 0)
     {
-        return (position(e)%3);
+        return (position(e) % 3);
     }
-    std::vector<int> voisins_moins() const { // renvoie la liste des voisins du -1
+    std::vector<int> voisins_moins() const
+    { // renvoie la liste des voisins du -1
         std::vector<int> voisins;
         int i = position(-1);
         int l = ligne(position(-1));
         int c = colonne(position(-1));
-        if (l==0){
-            voisins.push_back(i+3);
-            }
-        else if (l==1){
-            voisins.push_back(i-3);
-            voisins.push_back(i+3);
+        if (l == 0)
+        {
+            voisins.push_back(i + 3);
         }
-        else if (l==2){
-            voisins.push_back(i-3);
+        else if (l == 1)
+        {
+            voisins.push_back(i - 3);
+            voisins.push_back(i + 3);
         }
-        if (c==0){
-            voisins.push_back(i+1);
+        else if (l == 2)
+        {
+            voisins.push_back(i - 3);
         }
-        else if (c==1){
-            voisins.push_back(i+1);
-            voisins.push_back(i-1);
+        if (c == 0)
+        {
+            voisins.push_back(i + 1);
         }
-        else if (c==2){
-            voisins.push_back(i-1);
+        else if (c == 1)
+        {
+            voisins.push_back(i + 1);
+            voisins.push_back(i - 1);
+        }
+        else if (c == 2)
+        {
+            voisins.push_back(i - 1);
         }
         return voisins;
-        }
-    std::vector<Board> adjacents () const {
+    }
+    std::vector<Board> adjacents() const
+    {
         std::vector<int> vois_moins = voisins_moins();
         int p_moins = position(-1);
         int l = vois_moins.size();
         std::vector<Board> boards_adjacents;
-        for (int i = 0; i < l; i++) {
+        for (int i = 0; i < l; i++)
+        {
             Board new_board = Board(tab);
             int p = position(vois_moins[i]);
             new_board.swap(p_moins, p);
@@ -136,22 +151,21 @@ public:
     }
 };
 
-
 void affichage(Board tab)
 {
-    std::vector<int> vect=tab.tableau();
-    for (int i=0;i<3;i++)
+    std::vector<int> vect = tab.tableau();
+    for (int i = 0; i < 3; i++)
     {
-        std::cout<<vect[i]<<"  ";
+        std::cout << vect[i] << "  ";
     }
-    std::cout<<std::endl;
-    for (int i=3;i<6;i++)
+    std::cout << std::endl;
+    for (int i = 3; i < 6; i++)
     {
-        std::cout<<vect[i]<<"  ";
+        std::cout << vect[i] << "  ";
     }
-    std::cout<<std::endl;
-    for (int i=6;i<9;i++)
+    std::cout << std::endl;
+    for (int i = 6; i < 9; i++)
     {
-        std::cout<<vect[i]<<"  ";
+        std::cout << vect[i] << "  ";
     }
 }

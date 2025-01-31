@@ -15,12 +15,14 @@ public:
 
     bool in(Board, Board, std::unordered_map<Board, std::vector<Board>>);
 
-    void ajouter(Board& s1, Board& s2)
+    void ajouter(const Board& s1, const Board& s2)
     {
         graph[s1].push_back(s2);
     }
 
-    Graph_board (Board b) : begin(b)
+    Graph_board (Board b) : begin(b) {}
+
+    void build_graph()
     {
         std::stack<Board> a_visiter;
         a_visiter.push(begin);
@@ -32,7 +34,7 @@ public:
             {
                 if (not in(sommet, elem, graph)) // fonction in qui permet de tester la présence d'une arete dans le graphe
                 {
-                    graph.ajouter(sommet, elem);
+                    this->ajouter(sommet, elem);
                 }
             }
         }
@@ -54,18 +56,10 @@ public:
     std::vector<Board> crochets(Board& sommet)
     {
         std::vector<Board> crochets_sommet;
-            for (auto& pair : graph)
-            {
-                if (equal(pair.first,sommet)) //fonction equal teste l'egalite de board
-                {
-                    crochets_sommet = pair.second;
-                    return crochets_sommet;
-                }
-                return crochets_sommet;
-            }
-       
-        static const std::unordered_map<std::string, int> empty_map;
-        return empty_map;
+        auto iter = this->graph.find(sommet);
+        if (iter != this->graph.end())
+                crochets_sommet = iter->second;
+        return crochets_sommet;
     }
 
 
@@ -76,6 +70,7 @@ public:
 std::unordered_map<Board, int> initialiser_distance (Graph_board graph)
 {
     std::unordered_map<Board, int> distance;
+    graph.build_graph();
     for (const auto &sommet : graph)
     {
         distance[sommet] = -1;
