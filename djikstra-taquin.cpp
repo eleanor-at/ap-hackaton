@@ -14,7 +14,7 @@ public:
 
     bool in(Board s1, Board s2, Graph_board);
 
-    void ajouter(Board s1, Board s2)
+    void ajouter(Board& s1, Board& s2)
     {
         graph.crochets(s1).push(s2);
     }
@@ -37,26 +37,26 @@ public:
             }
         }
     }
-
-    std::vector<Board> crochets(Board)
+    
+    
+    std::vector<Board> crochets(Board& sommet)
     {
-        std::vector;
-        for (auto &pair1 : graph)
-        {
-            if (pair1.first == name)
+        std::vector<Board> crochets_sommet;
+            for (auto& pair : graphe)
             {
-                for (auto &pair2 : pair1.second)
+                if (equal(pair.first,sommet)) //fonction equal teste l'egalite de board
                 {
-                    graphe_name[pair2.first] = pair2.second;
+                    crochets_sommet = pair.second();
+                    return crochets_sommet;
                 }
                 return graphe_name;
             }
-        }
+       
         static const std::unordered_map<std::string, int> empty_map;
         return empty_map;
     }
 
-}
+};
 
 std::unordered_map<Board, int>
 initialiser_distance(Graph_board graph)
