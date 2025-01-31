@@ -6,7 +6,7 @@
 #include <string>
 #include <cstdlib>
 
-bool in(int x,std::vector<int> vect)
+bool in(int x,std::vector<int> vect) //vérifie si x est dans vect
 {
     for (auto e:vect)
     {
