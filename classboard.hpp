@@ -25,7 +25,7 @@ public:
         return tab;
     }
     std::vector<int> voisins_moins () {}; //renvoie la liste des voisins du -1
-    int position (int e) // renvoie la position du -1
+    int position (int e) // renvoie la position de e
     {
         for (int i = 0; i < 9; i++)
         {
