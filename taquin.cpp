@@ -65,6 +65,7 @@ void play()
     while (true)
     {
         affichage(tab);
+        std::cout<<std::endl;
         print("action à effectuer ? (q pour quitter, i-j-k-l pour se déplacer)");
 
         std::cin >> key;
@@ -101,6 +102,7 @@ void play()
 
 int main()
 {
+    srand(time(NULL));
     play();
     return 0;
 }
