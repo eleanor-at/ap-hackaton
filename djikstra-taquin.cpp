@@ -74,7 +74,7 @@ public:
 
 };
 
-std::unordered_map<Board, int> initialiser_distance(Graph_board graph)
+std::unordered_map<Board, int> initialiser_distance (Graph_board graph)
 {
     std::unordered_map<Board, int> distance;
     for (const auto &sommet : graph)
@@ -140,12 +140,12 @@ void dijkstra(Graph_board graph) // affiche le plus court chemin pour gagner la 
     std::unordered_map<Board, int> distance = initialiser_distance(graph);
     std::vector<Board> a_explorer = graph.sommet();
     std::vector<Board> successeur;
-    successeur[0] = Graph_board.begin();
+    successeur[0] = graph.begin();
     while (a_explorer.size() != 0)
     {
         Board s = trouve_sommet_min(a_explorer);
         a_explorer.erase(s);
-        for (const auto &voisin : s.adjacent()) // méthode adjacent qui renvoie les sommets adjacents d'un sommet
+        for (const auto &voisin : s.adjacents()) // méthode adjacent qui renvoie les sommets adjacents d'un sommet
         {
             maj_distance(s, voisin);
         }
