@@ -19,11 +19,11 @@ public:
         int t = tab[x];
         tab[x] = tab[y];
         tab[y] = t;
-    };
+    }
     std::vector<int> tableau() // renvoie le board
     {
         return tab;
-    };
+    }
     int position(int e) // renvoie la position d'un élément du board
     {
         for (int i = 0; i < 9; i++)
@@ -33,10 +33,8 @@ public:
                 return i;
             }
         }
-    };
-    std::vector<int> voisins_moins() { // renvoie la liste des voisins du -1
-
-    };
+    }
+    std::vector<int> voisins_moins(); // renvoie la liste des voisins du -1
     bool win() // renvoie si on a gagné
     {
         for (int i = 0; i < 8; i++)
@@ -51,5 +49,5 @@ public:
             return false;
         }
         return true;
-    };
+    }
 };
