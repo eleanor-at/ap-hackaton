@@ -79,7 +79,7 @@ std::unordered_map<Board, int> initialiser_distance (Graph_board graph)
     return distance;
 }
 
-Board trouve_sommet_min(std::vector<Board> a_explorer)
+Board trouve_sommet_min(std::vector<Board> a_explorer, std::unordered_map<Board, int> distance)
 {
     int min = std::numeric_limits<int>::infinity();
     Board sommet_min;
@@ -96,22 +96,23 @@ Board trouve_sommet_min(std::vector<Board> a_explorer)
 
 
 
-bool in(Board s1, Board s2, Graph_board graph);
+bool in(Board s1, Board s2, Graph_board graph)
 {
+    graph.build_graph();
     for (const auto& elem : graph)
     {
-        if (elem == s1)
+        if (elem.first.equal(s1))
         {
             for (const auto& voisin : graph.crochets(elem))
             {
                 if (voisin == s2)
                 {
-                    return true
+                    return true;
                 }
             }
         }
     }
-    return false
+    return false;
 
 }
 
