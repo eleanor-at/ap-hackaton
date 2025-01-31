@@ -52,7 +52,8 @@ public:
             {
                 return i;
             }
-        }
+        };
+        return (99);
     }
     int ligne(int e) // renvoie la ligne du board sur laquelle est l'élément (commence à 0)
     {
@@ -70,6 +71,9 @@ public:
         if (l==0){
             voisins.push_back(i+3);
             };
+        if (l==1){
+
+        };
         }
     bool win() // renvoie si on a gagné
     {
