@@ -72,8 +72,22 @@ public:
             voisins.push_back(i+3);
             };
         if (l==1){
-
+            voisins.push_back(i-3);
+            voisins.push_back(i+3);
         };
+        if (l==2){
+            voisins.push_back(i-3);
+        };
+        if (c==0){
+            voisins.push_back(i+1);
+        }
+        if (c==1){
+            voisins.push_back(i+1);
+            voisins.push_back(i-1);
+        }
+        if (c==2){
+            voisins.push_back(i-1);
+        }
         }
     bool win() // renvoie si on a gagné
     {
