@@ -24,6 +24,8 @@ private:
     std::vector<int> tab;
 
 public:
+
+
     Board() : tab(9) {};
     explicit Board(const std::vector<int> &vect) : tab(vect)
     {
@@ -124,7 +126,7 @@ public:
         return boards_adjacents;
 
     } 
-    bool equal (Board b1) { //fonction testant si deux boards sont égaux
+    bool equal (Board b1) const{ //fonction testant si deux boards sont égaux
         for (int i = 0; i < 9; i++)
         {
             if (b1.tab[i] != this->tab[i])
@@ -149,7 +151,18 @@ public:
         }
         return true;
     }
+
+    bool operator< (const Board& other);
+
 };
+
+
+bool Board::operator< (const Board& other) {
+    for (int i = 0 ; i < this->tab.size() ; ++i)
+        if (this->tab[i] < other.tab[i])
+            return true;
+    return false;
+}
 
 void affichage(Board tab)
 {
