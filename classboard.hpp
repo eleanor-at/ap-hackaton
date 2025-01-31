@@ -42,17 +42,15 @@ public:
     {
         return (position(e)%3);
     }
-    std::vector<int> voisins_moins() {
+    std::vector<int> voisins_moins() { // renvoie la liste des voisins du -1
         std::vector<int> voisins;
+        int i = position(-1);
         int l = ligne(position(-1));
         int c = colonne(position(-1));
         if (l==0){
-            if (c==0){
-            
+            voisins.push_back(i+3);
             };
         }
-
-    }; // renvoie la liste des voisins du -1
     bool win() // renvoie si on a gagné
     {
         for (int i = 0; i < 8; i++)
