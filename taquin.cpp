@@ -5,7 +5,7 @@ void print(const std::string &msg)
     std::cout << msg <<std::endl;
 }
 
-void gauche(Board tab)
+void gauche(Board& tab)
 {
     int x=tab.position(-1);
     if (x%3!=0)
@@ -18,7 +18,7 @@ void gauche(Board tab)
     }
 }
 
-void droite(Board tab)
+void droite(Board& tab)
 {
     int x=tab.position(-1);
     if (x%3!=2)
@@ -31,7 +31,7 @@ void droite(Board tab)
     }
 }
 
-void haut(Board tab)
+void haut(Board& tab)
 {
     int x=tab.position(-1);
     if (x>2)
@@ -44,7 +44,7 @@ void haut(Board tab)
     }
 }
 
-void bas (Board tab)
+void bas (Board& tab)
 {
     int x=tab.position(-1);
     if (x<6)
