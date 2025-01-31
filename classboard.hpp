@@ -75,24 +75,25 @@ public:
         int c = colonne(position(-1));
         if (l==0){
             voisins.push_back(i+3);
-            };
-        if (l==1){
+            }
+        else if (l==1){
             voisins.push_back(i-3);
             voisins.push_back(i+3);
-        };
-        if (l==2){
+        }
+        else if (l==2){
             voisins.push_back(i-3);
-        };
+        }
         if (c==0){
             voisins.push_back(i+1);
         }
-        if (c==1){
+        else if (c==1){
             voisins.push_back(i+1);
             voisins.push_back(i-1);
         }
-        if (c==2){
+        else if (c==2){
             voisins.push_back(i-1);
         }
+        return voisins;
         }
     std::vector<Board> adjacents () const {
         std::vector<int> vois_moins = voisins_moins();
