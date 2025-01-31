@@ -5,25 +5,6 @@ void print(const std::string &msg)
     std::cout << msg;
 }
 
-void affichage(Board tab)
-{
-    std::vector<int> vect=tab.tableau();
-    for (int i=0;i<3;i++)
-    {
-        std::cout<<vect[i]<<"  ";
-    }
-    std::cout<<std::endl;
-    for (int i=3;i<6;i++)
-    {
-        std::cout<<vect[i]<<"  ";
-    }
-    std::cout<<std::endl;
-    for (int i=6;i<9;i++)
-    {
-        std::cout<<vect[i]<<"  ";
-    }
-}
-
 void gauche(Board tab)
 {
     int x=tab.position(-1);
