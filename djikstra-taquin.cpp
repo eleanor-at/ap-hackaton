@@ -12,7 +12,7 @@ private:
 public:
     std::vector<Board> crochets(Board);
 
-    bool in(Board s1, Board s2, Graph_board);
+    bool in(Board, Board, Graph_board);
 
     void ajouter(Board& s1, Board& s2)
     {
@@ -56,6 +56,9 @@ public:
         return empty_map;
     }
 
+
+
+
 };
 
 std::unordered_map<Board, int>
@@ -84,6 +87,31 @@ Board trouve_sommet_min(std::vector<Board> a_explorer)
     }
     return sommet_min;
 }
+
+
+
+bool in(Board s1, Board s2, Graph_board graph);
+{
+    for (const auto& elem : graph)
+    {
+        if (elem == s1)
+        {
+            for (const auto& voisin : graph.crochets(elem))
+            {
+                if (voisin == s2)
+                {
+                    return true
+                }
+            }
+        }
+    }
+    return false
+
+}
+
+
+
+
 
 void maj_distance(Board s1, Board s2)
 {
