@@ -109,10 +109,10 @@ public:
         return boards_adjacents;
 
     } 
-    bool equal (Board b1, Board b2) { //fonction testant si deux boards sont égaux
+    bool equal (Board b1) { //fonction testant si deux boards sont égaux
         for (int i = 0; i < 9; i++)
         {
-            if (b1.tab[i] != b2.tab[i])
+            if (b1.tab[i] != this->tab[i])
             {
                 return false;
             }
