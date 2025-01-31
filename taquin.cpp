@@ -2,7 +2,7 @@
 
 void print(const std::string &msg)
 {
-    std::cout << msg;
+    std::cout << msg <<std::endl;
 }
 
 void gauche(Board& tab)

@@ -16,7 +16,6 @@ bool in(int x,std::vector<int> vect) //vérifie si x est dans vect
     return false;
 }
 
-
 class Board
 {
 private:
@@ -26,7 +25,7 @@ public:
     Board() : tab(9) {};
     explicit Board(const std::vector<int>& vect) : tab(vect) {
         if (this->tab.size() != 9)
-            throw std::runtime_error("");
+            throw std::runtime_error("Taille de board non valide.");
     }
     void reset() //crée un board avec les nombres rangés aléatoirement et le -1 en bas à droite
     {
@@ -76,24 +75,25 @@ public:
         int c = colonne(position(-1));
         if (l==0){
             voisins.push_back(i+3);
-            };
-        if (l==1){
+            }
+        else if (l==1){
             voisins.push_back(i-3);
             voisins.push_back(i+3);
-        };
-        if (l==2){
+        }
+        else if (l==2){
             voisins.push_back(i-3);
-        };
+        }
         if (c==0){
             voisins.push_back(i+1);
         }
-        if (c==1){
+        else if (c==1){
             voisins.push_back(i+1);
             voisins.push_back(i-1);
         }
-        if (c==2){
+        else if (c==2){
             voisins.push_back(i-1);
         }
+        return voisins;
         }
     std::vector<Board> adjacents () const {
         std::vector<int> vois_moins = voisins_moins();
