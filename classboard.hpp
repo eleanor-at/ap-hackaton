@@ -89,6 +89,16 @@ public:
             voisins.push_back(i-1);
         }
         }
+    bool equal (Board b1, Board b2) { //fonction testant si deux boards sont égaux
+        for (int i = 0; i < 9; i++)
+        {
+            if (b1.tab[i] != b2.tab[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
     bool win() // renvoie si on a gagné
     {
         for (int i = 0; i < 8; i++)
