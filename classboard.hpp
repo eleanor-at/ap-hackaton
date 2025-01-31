@@ -72,9 +72,41 @@ public:
             voisins.push_back(i+3);
             };
         if (l==1){
-
+            voisins.push_back(i-3);
+            voisins.push_back(i+3);
         };
+        if (l==2){
+            voisins.push_back(i-3);
+        };
+        if (c==0){
+            voisins.push_back(i+1);
         }
+        if (c==1){
+            voisins.push_back(i+1);
+            voisins.push_back(i-1);
+        }
+        if (c==2){
+            voisins.push_back(i-1);
+        }
+        }
+    std::vector<Board> adjacents () {
+        std::vector<int> vois_moins;
+        int l = vois_moins.size();
+        for (int i = 0; i < l; i++) {
+            std::vector<Board> new_board;
+        }
+
+    } 
+    bool equal (Board b1, Board b2) { //fonction testant si deux boards sont égaux
+        for (int i = 0; i < 9; i++)
+        {
+            if (b1.tab[i] != b2.tab[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
     bool win() // renvoie si on a gagné
     {
         for (int i = 0; i < 8; i++)

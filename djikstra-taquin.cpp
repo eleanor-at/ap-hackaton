@@ -1,26 +1,23 @@
-#include <iostream>
-#include <vector>
 #include <limits>
 #include <unordered_map>
 #include <stack>
+#include "classboard.hpp"
 
 class Graph_board
 {
-    private:
-    std::unordered_map<Board, std::vector<Board> > graph;
+private:
+    std::unordered_map<Board, std::vector<Board>> graph;
     Board begin;
 
-    public:
+public:
     std::vector<Board> crochets(Board);
 
-    Bool in(Board s1, Board s2, Graph_board)
-
+    bool in(Board s1, Board s2, Graph_board);
 
     void ajouter(Board& s1, Board& s2)
     {
         graph.crochets(s1).push(s2);
     }
-
 
     Graph_board(Board begin) :
 
@@ -31,18 +28,14 @@ class Graph_board
         {
             Board sommet = a_visiter.top();
             a_visiter.pop();
-            for (const auto& elem: sommet.adjacent())
+            for (const auto &elem : sommet.adjacent())
             {
-                if (not in(sommet, elem, graph)) //fonction in qui permet de tester la présence d'une arete dans le graphe
+                if (not in(sommet, elem, graph)) // fonction in qui permet de tester la présence d'une arete dans le graphe
                 {
                     graph.ajouter(sommet, elem);
-
                 }
-                
             }
         }
-
-
     }
     
     
@@ -56,40 +49,26 @@ class Graph_board
                     crochets_sommet = pair.second();
                     return crochets_sommet;
                 }
-
-                
+                return graphe_name;
             }
-            static const std::unordered_map<std::string, int> empty_map;
-            return empty_map;
+       
+        static const std::unordered_map<std::string, int> empty_map;
+        return empty_map;
     }
 
+};
 
-
-
-
-    
-
-}
-
-
-
-
-
-
-
-std::unordered_map<Board, int> initialiser_distance(Graph_board graph) 
+std::unordered_map<Board, int>
+initialiser_distance(Graph_board graph)
 {
     std::unordered_map<Board, int> distance;
-    for (const auto& sommet : graph)
+    for (const auto &sommet : graph)
     {
         distance[sommet] = -1;
     }
-    distance[graph.begin()] = 0; //dans la classe Graph_board, implémenter la fonction begin
+    distance[graph.begin()] = 0; // dans la classe Graph_board, implémenter la fonction begin
     return distance;
 }
-
-
-
 
 Board trouve_sommet_min(std::vector<Board> a_explorer)
 {
@@ -106,22 +85,17 @@ Board trouve_sommet_min(std::vector<Board> a_explorer)
     return sommet_min;
 }
 
-
 void maj_distance(Board s1, Board s2)
 {
-    if (distance[s2] > distance[s1] + 1) //distance du début à s2 est plus grande que celle du début à s2 en passant par s1
-                                         // +1 correspond au poids de l'arete ie le nombre d'étapes
+    if (distance[s2] > distance[s1] + 1) // distance du début à s2 est plus grande que celle du début à s2 en passant par s1
+                                         //  +1 correspond au poids de l'arete ie le nombre d'étapes
     {
         distance[s2] = distance[s1] + 1;
         successeur[s1] = s2;
-
     }
 }
 
-
-
-
-void dijkstra(Graph_board graph) //affiche le plus court chemin pour gagner la partie
+void dijkstra(Graph_board graph) // affiche le plus court chemin pour gagner la partie
 {
     std::unordered_map<Board, int> distance = initialiser_distance(graph);
     std::vector<Board> a_explorer = graph.sommet();
@@ -131,27 +105,17 @@ void dijkstra(Graph_board graph) //affiche le plus court chemin pour gagner la p
     {
         Board s = trouve_sommet_min(a_explorer);
         a_explorer.erase(s);
-        for (const auto& voisin : s.adjacent()) //méthode adjacent qui renvoie les sommets adjacents d'un sommet
+        for (const auto &voisin : s.adjacent()) // méthode adjacent qui renvoie les sommets adjacents d'un sommet
         {
             maj_distance(s, voisin);
         }
     }
-    
-    for (const auto& elem: successeur)
+
+    for (const auto &elem : successeur)
     {
         affichage(elem);
-
     }
-
-
 }
-
-
-
-
-
-
-
 
 int main()
 {
