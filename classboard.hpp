@@ -34,8 +34,8 @@ public:
         tab[8]=-1;
         for (int i=0;i<8;i++)
         {
-            int x=rand()%8;
-            while (in(x,present)) {x=rand()%8;}
+            int x=rand()%8+1;
+            while (in(x,present)) {x=rand()%8+1;}
             present.push_back(x);
             tab[i]=x;
         }
