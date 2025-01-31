@@ -16,7 +16,6 @@ bool in(int x,std::vector<int> vect) //vérifie si x est dans vect
     return false;
 }
 
-
 class Board
 {
 private:
@@ -26,7 +25,7 @@ public:
     Board() : tab(9) {};
     explicit Board(const std::vector<int>& vect) : tab(vect) {
         if (this->tab.size() != 9)
-            throw std::runtime_error("");
+            throw std::runtime_error("Taille de board non valide.");
     }
     void reset() //crée un board avec les nombres rangés aléatoirement et le -1 en bas à droite
     {
