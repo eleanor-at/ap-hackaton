@@ -16,7 +16,7 @@ class Graph_board
     Bool in(Board s1, Board s2, Graph_board)
 
 
-    void ajouter(Board s1, Board s2)
+    void ajouter(Board& s1, Board& s2)
     {
         graph.crochets(s1).push(s2);
     }
@@ -46,19 +46,15 @@ class Graph_board
     }
     
     
-    std::vector<Board> crochets(Board)
+    std::vector<Board> crochets(Board& sommet)
     {
-        std::vector;
-            for (auto& pair1 : graphe)
+        std::vector<Board> crochets_sommet;
+            for (auto& pair : graphe)
             {
-                if (pair1.first == name)
+                if (equal(pair.first,sommet)) //fonction equal teste l'egalite de board
                 {
-                    for (auto& pair2 : pair1.second)
-                    {
-                        graphe_name[pair2.first] = pair2.second;
-
-                    }
-                    return graphe_name;
+                    crochets_sommet = pair.second();
+                    return crochets_sommet;
                 }
 
                 
