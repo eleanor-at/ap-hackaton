@@ -13,24 +13,22 @@ private:
 public:
     std::vector<Board> crochets(Board);
 
-    bool in(Board, Board, Graph_board);
+    bool in(Board, Board, std::unordered_map<Board, std::vector<Board>>);
 
     void ajouter(Board& s1, Board& s2)
     {
         graph[s1].push_back(s2);
     }
 
-    Graph_board(Board begin) :
-
+    Graph_board (Board b) : begin(b)
     {
-
-        stack<Board> a_visiter;
+        std::stack<Board> a_visiter;
         a_visiter.push(begin);
         while (not a_visiter.empty())
         {
             Board sommet = a_visiter.top();
             a_visiter.pop();
-            for (const auto &elem : sommet.adjacent())
+            for (const auto &elem : sommet.adjacents())
             {
                 if (not in(sommet, elem, graph)) // fonction in qui permet de tester la présence d'une arete dans le graphe
                 {
@@ -56,11 +54,11 @@ public:
     std::vector<Board> crochets(Board& sommet)
     {
         std::vector<Board> crochets_sommet;
-            for (auto& pair : graphe)
+            for (auto& pair : graph)
             {
                 if (equal(pair.first,sommet)) //fonction equal teste l'egalite de board
                 {
-                    crochets_sommet = pair.second();
+                    crochets_sommet = pair.second;
                     return crochets_sommet;
                 }
                 return crochets_sommet;
