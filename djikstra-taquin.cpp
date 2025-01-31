@@ -5,6 +5,7 @@
 
 class Graph_board
 {
+    friend std::unordered_map<Board, int> initialiser_distance(Graph_board);
 private:
     std::unordered_map<Board, std::vector<Board>> graph;
     Board begin;
@@ -39,6 +40,18 @@ public:
     }
     
     
+    std::unordered_map<Board, std::vector<Board> >::const_iterator begin() const {
+        return graph.cbegin();
+    }
+
+    std::unordered_map<Board, std::vector<Board> >::const_iterator end() const {
+        return graph.cend();
+    }
+
+
+
+
+
     std::vector<Board> crochets(Board& sommet)
     {
         std::vector<Board> crochets_sommet;
@@ -49,7 +62,7 @@ public:
                     crochets_sommet = pair.second();
                     return crochets_sommet;
                 }
-                return graphe_name;
+                return crochets_sommet;
             }
        
         static const std::unordered_map<std::string, int> empty_map;
@@ -61,15 +74,14 @@ public:
 
 };
 
-std::unordered_map<Board, int>
-initialiser_distance(Graph_board graph)
+std::unordered_map<Board, int> initialiser_distance(Graph_board graph)
 {
     std::unordered_map<Board, int> distance;
     for (const auto &sommet : graph)
     {
         distance[sommet] = -1;
     }
-    distance[graph.begin()] = 0; // dans la classe Graph_board, implémenter la fonction begin
+    distance[graph.begin] = 0; // dans la classe Graph_board, implémenter la fonction begin
     return distance;
 }
 
@@ -147,5 +159,8 @@ void dijkstra(Graph_board graph) // affiche le plus court chemin pour gagner la 
 
 int main()
 {
+    Board b;
+    b.reset();
+    Graph_board g(b);
     return 0;
 }
