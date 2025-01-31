@@ -2,14 +2,77 @@
 #include <vector>
 #include <limits>
 #include <unordered_map>
+#include <stack>
 
 class Graph_board
 {
     private:
-    std::unordered_map<Board, Board> graphe;
+    std::unordered_map<Board, std::vector<Board> > graph;
+    Board begin;
 
     public:
+    std::vector<Board> crochets(Board);
+
+    Bool in(Board s1, Board s2, Graph_board)
+
+
+    void ajouter(Board s1, Board s2)
+    {
+        graph.crochets(s1).push(s2);
+    }
+
+
+    Graph_board(Board begin) :
+
+    {
+        stack<Board> voisins;
+        a_visiter.push(begin);
+        while (not a_visiter.empty())
+        {
+            Board sommet = a_visiter.top();
+            a_visiter.pop();
+            for (const auto& elem: sommet.adjacent())
+            {
+                if (not in(sommet, elem, graph)) //fonction in qui permet de tester la présence d'une arete dans le graphe
+                {
+                    graph.ajouter(sommet, elem);
+
+                }
+                
+            }
+        }
+
+
+    }
     
+    
+    std::vector<Board> crochets(Board)
+    {
+        std::vector;
+            for (auto& pair1 : graphe)
+            {
+                if (pair1.first == name)
+                {
+                    for (auto& pair2 : pair1.second)
+                    {
+                        graphe_name[pair2.first] = pair2.second;
+
+                    }
+                    return graphe_name;
+                }
+
+                
+            }
+            static const std::unordered_map<std::string, int> empty_map;
+            return empty_map;
+    }
+
+
+
+
+
+    
+
 }
 
 
