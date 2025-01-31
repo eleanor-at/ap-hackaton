@@ -24,13 +24,13 @@ public:
     Board() : tab(9) {};
     void reset() //crée un board avec les nombres rangés aléatoirement et le -1 en bas à droite
     {
-        std::vector<int> rempli;
+        std::vector<int> present;
         tab[8]=-1;
         for (int i=0;i<8;i++)
         {
-            int x=rand()%9;
-            while (in(x,rempli)) {x=rand()%9;}
-            rempli.push_back(x);
+            int x=rand()%8;
+            while (in(x,present)) {x=rand()%8;}
+            present.push_back(x);
             tab[i]=x;
         }
     }
